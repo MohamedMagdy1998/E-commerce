@@ -1,0 +1,96 @@
+<section class="w-1/2 mx-auto bg-gray- border rounded shadow my-20 p-4">
+
+    <h1 class="text-center text-3xl text-green-500 fw-bolder">CheckOut</h1>
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+
+        <div class="mb-2">
+
+            @let controlDetails = checkOutForm.get('details');
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-500 ">details :</label>
+            <textarea formControlName="details" id="details" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+
+            @if(controlDetails?.errors&&controlDetails?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlDetails?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+        </div>
+
+
+
+        <div class="mb-2">
+
+            @let controlCity = checkOutForm.get('city');
+            <label for="city" class=" block mb-2 text-sm font-medium text-gray-500 ">city :</label>
+            <input formControlName="city" type="text" id="city" class=" bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if(controlCity?.errors&&controlCity?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlCity?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+        </div>
+
+        <div class="mb-2">
+            @let controlPhone = checkOutForm.get('phone');
+            <label for="Phone" class="block mb-2 text-sm font-medium text-gray-500 ">Phone :</label>
+            <input formControlName="phone" type="tel" id="Phone" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if (controlPhone?.errors&&controlPhone?.touched )
+            {
+
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlPhone?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlPhone?.getError('pattern')){
+                        <li>Use Egyption number</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+            }
+
+        </div>
+
+        <button type="submit" class="main-button">Online Payment</button>
+
+    </form>
+
+</section>

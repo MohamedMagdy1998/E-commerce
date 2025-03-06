@@ -1,0 +1,52 @@
+<section class=" bg-gray-100 bor rounded p-4   w-[75%] mx-auto">
+
+    <h1 class="text-3xl text-center text-green-500 ">Shop Cart</h1>
+    <span class="p-2 text-green-600 my-2 text-capitalize">Total Cart Price: {{cartDetails().totalCartPrice | currency:"GBP"}}</span>
+
+
+    @for (product of cartDetails().products; track product.product._id)
+    {
+
+    <div class=" grid md:grid-cols-[10%_minmax(0,1fr)] border-bottom mb-1">
+
+        <div class="image">
+            <img [src]="product.product.imageCover" class="w-full px-2 my-2 " [alt]="product.product.title">
+
+        </div>
+
+        <div class="information text-capitalize flex justify-between items-center">
+
+            <div class="description">
+                <h3>{{product.product.title}}</h3>
+                <h4>{{product.price| currency:"GBP"}}</h4>
+                <button (click)="removeProduct(product.product._id)" class="text-green-800 text-capitalize fw-bolder"> <i class="fas text-gray-600 fa-trash-can"></i> Remove</button>
+
+            </div>
+
+            <div class="count flex justify-center items-center">
+                <button (click)="updateProductCount(product.product._id,product.count-1)" class="text-3xl text-gray-600"><i class="fa-regular fa-square-minus"></i></button>
+                <span class="px-2 text-3xl text-blue-500 fw-bolder">{{product.count}}</span>
+                <button (click)="updateProductCount(product.product._id,product.count+1)" class="text-3xl text-gray-600"><i class="fa-regular fa-square-plus"></i></button>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+    }
+
+    @if (cartDetails().totalCartPrice > 0)
+    {
+    <button class="main-button w-[75%] mx-auto text-3xl block my-2" [routerLink]="['/checkout',cartDetails()._id]">CheckOut</button>
+    <button (click)="clear()" class="text-white px-12 py-2 hover:bg-red-600 text-3xl transition-colors duration-700 border rounded  bg-red-800 w-[75%] mx-auto block my-2">Clear Cart</button>
+    }
+
+
+</section>

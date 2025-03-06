@@ -1,0 +1,40 @@
+<section class="productsHome">
+
+    <div class="products grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (product of allProducts(); track product.id){
+
+        <div class="product px-2 rounded-md border border-yellow-100 shadow overflow-hidden">
+            <div>
+                <div class=" imageProduct">
+                    <img loading="lazy" [src]="product.imageCover" class="w-full h-[250px] object-contain" [alt]="product.title" />
+                </div>
+
+                <div class="productDescription px-2 py-3">
+                    <h2 class="capitalize text-2xl text-center text-gray-700">{{ product.category.name }}</h2>
+                    <h3 class="capitalize text-xl line-clamp-2 text-red-600">Title : {{ product.title }}</h3>
+                </div>
+
+                <div class="productInformation flex justify-between items-center px-2">
+                    <span>{{ product.price }} EGP</span>
+                    <span><i class="fas fa-star text-yellow-500 px-1"></i>{{ product.ratingsAverage }}
+                    </span>
+                </div>
+            </div>
+
+            <div>
+
+                <button class="showDetailsBtn w-full capitalize bg-blue-500 py-2 text-white rounded-md my-2" [routerLink]="['/details',product._id]">Show Details</button>
+
+                <button (click)="addToCart(product._id)" class="addCartBtn w-full capitalize bg-green-500 py-2 text-white rounded-md">
+                    add to cart
+                </button>
+            </div>
+
+
+        </div>
+
+        }
+
+    </div>
+
+</section>

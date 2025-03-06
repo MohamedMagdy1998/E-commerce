@@ -1,0 +1,39 @@
+<h1 class=" capitalize text-3xl fw-bolder text-center underline underline-offset-8 text-green-800">last orders</h1>
+<section class="w-3/4 mx-auto bg-gray- border rounded shadow my-10 p-4">
+
+    <div class="items grid sm:grid-cols-2 md:grid-cols-3  gap-10">
+        @for (order of userOrders.slice(0,6); track order._id){
+
+
+
+        <div class="product px-2 rounded-md shadow overflow-hidden">
+            <div>
+                <div class="imageProduct">
+                    <img loading="lazy" [src]="order.cartItems[0].product.imageCover" class="w-full h-[250px] object-contain" [alt]=" order.cartItems[0].product.title" />
+                </div>
+
+                <div class="productDescription px-2 py-3">
+                    <h2 class="capitalize text-center text-2xl text-gray-700">{{ order.cartItems[0].product.brand.name}}</h2>
+                    <h3 class="text-blue-800 capitalize clamp-1"><span class="text-gray-600 text-red-400 text-2xl">Title :</span> {{ order.cartItems[0].product.title }}</h3>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        }
+
+
+
+
+
+    </div>
+
+
+
+
+</section>

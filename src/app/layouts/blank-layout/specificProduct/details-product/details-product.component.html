@@ -1,0 +1,33 @@
+<section class="productDetails">
+
+    <div class="flex gap-10">
+        <div class="productImage w-1/3">
+
+            <img class="border border-gray-500  rounded-lg " [src]="productDetails.imageCover" alt="product photo">
+
+        </div>
+
+        <div class="productDetils py-5 w-2/3">
+
+            <h2 class=" my-4 text-green-400 text-2xl font-bold">Title : {{productDetails.title}}</h2>
+
+            <p class="my-4 text-gray-500 fw-bolder">Description : {{productDetails.description}}</p>
+            <p class="my-4 text-blue-500 text-xl fw-bolder">ratings Average : {{productDetails.ratingsAverage}}</p>
+
+            <owl-carousel-o [options]="customOptions">
+                @for (image of productDetails.images; track $index) {
+                <ng-template carouselSlide>
+                  <div class="slider mb-3 mt-5">
+                    <img [src]="image" class="w-full h-[300px] object-contain" alt="image" />
+                 
+                  </div>
+                </ng-template>
+                }
+                
+              </owl-carousel-o>
+        </div>
+
+
+    </div>
+
+</section>

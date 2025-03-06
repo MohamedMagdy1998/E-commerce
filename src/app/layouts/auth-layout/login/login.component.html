@@ -1,0 +1,105 @@
+<section class="w-1/2 mx-auto bg-gray border rounded shadow my-20 p-4">
+    <h1 class="text-blue-700 fw-bolder text-center text-2xl">Please Login </h1>
+
+    <form class="logInForm" (ngSubmit)="submitData()" [formGroup]="logInForm">
+
+        <!-- validation email -->
+        <div class="mb-2">
+
+            @let controlEmail = logInForm.get('email');
+            <label for="Email" class="block mb-2 text-sm font-medium text-gray-500 ">Email :</label>
+            <input formControlName="email" type="email" id="Email" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if(controlEmail?.errors&&controlEmail?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlEmail?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlEmail?.getError('email')){
+                        <li>Enter valid Email</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+        </div>
+        <!-- validation email -->
+
+        <!-- validation password -->
+        <div class="mb-2">
+            @let controlPassword = logInForm.get('password');
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-500 ">Password :</label>
+            <input formControlName="password" type="password" id="Password" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if(controlPassword?.errors&&controlPassword?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlPassword?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlPassword?.getError('pattern')){
+                        <li>"must be at least 6 characters" </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+        </div>
+        <!-- validation password -->
+
+
+
+
+
+
+
+        <div class="flex justify-between">
+
+
+
+            <button type="submit" [disabled]="isLoading" class="login-button my-1"> Login
+
+                @if (this.isLoading())
+                {
+                <span class="ms-1 fas fa-spin fa-spinner"></span>
+                }
+
+            </button>
+
+
+            <a class="text-blue-600 text-2xl underline items-center" [routerLink]="['/forgot']">Forgot Password</a>
+
+        </div>
+
+        @if (invalidFormMessage()) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
+            {{invalidFormMessage()}}
+        </div>
+        }
+
+        @if (validFormMessage()) {
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 " role="alert">
+            {{validFormMessage()}}
+        </div>
+        }
+
+    </form>
+
+</section>

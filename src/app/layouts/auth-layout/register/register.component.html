@@ -1,0 +1,208 @@
+<section class="w-1/2 mx-auto bg-gray- border rounded shadow p-4">
+    <h1 class="text-blue-700 fw-bolder text-center text-2xl">Register Now </h1>
+
+    <form class="registerForm" (ngSubmit)="submitData()" [formGroup]="registerForm">
+
+
+        <!-- validation name -->
+
+        <div class="mb-2">
+            @let controlName = registerForm.get('name');
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-500 ">Name :</label>
+            <input formControlName="name" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if(controlName?.errors&&controlName?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlName?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlName?.getError('minlength')){
+                        <li>At least 3 characters</li>
+                        }
+                        @else {
+                        <li>Maximum usage of characters is 20</li>
+                        }
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+            }
+
+
+
+        </div>
+
+        <!-- validation name -->
+
+        <!-- validation email -->
+        <div class="mb-2">
+
+            @let controlEmail = registerForm.get('email');
+            <label for="Email" class="block mb-2 text-sm font-medium text-gray-500 ">Email :</label>
+            <input formControlName="email" type="email" id="Email" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if(controlEmail?.errors&&controlEmail?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlEmail?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlEmail?.getError('email')){
+                        <li>Enter valid Email</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+        </div>
+        <!-- validation email -->
+
+        <!-- validation password -->
+        <div class="mb-2">
+            @let controlPassword = registerForm.get('password');
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-500 ">Password :</label>
+            <input formControlName="password" type="password" id="Password" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if(controlPassword?.errors&&controlPassword?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlPassword?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlPassword?.getError('pattern')){
+                        <li>"must be at least 6 characters" </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+        </div>
+        <!-- validation password -->
+
+        <!-- validation repassword -->
+        <div class="mb-2">
+            @let controlRePassword = registerForm.get('rePassword');
+            <label for="Repassword" class="block mb-2 text-sm font-medium text-gray-500 ">Repassword :</label>
+            <input formControlName="rePassword" type="password" id="Repassword" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            @if(registerForm.getError('mismatch')&&controlRePassword?.touched )
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li>Doesn't match with Password</li>
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+            @if (controlRePassword?.getError('required')&&controlRePassword?.touched)
+            {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li>This field is required</li>
+
+                    </ul>
+                </div>
+            </div>
+            }
+
+
+
+
+        </div>
+        <!-- validation repassword -->
+
+        <!-- validation phone -->
+        <div class="mb-2">
+            @let controlPhone = registerForm.get('phone');
+            <label for="Phone" class="block mb-2 text-sm font-medium text-gray-500 ">Phone :</label>
+            <input formControlName="phone" type="tel" id="Phone" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            @if (controlPhone?.errors&&controlPhone?.touched )
+            {
+
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 mt-1 " role="alert">
+
+                <span class="sr-only">Danger</span>
+                <div>
+
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if(controlPhone?.getError('required'))
+                        {
+                        <li>This field is required</li>
+                        }
+                        @else if (controlPhone?.getError('pattern')){
+                        <li>Use Egyption number</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+
+            }
+
+        </div>
+        <!-- validation phone -->
+
+
+
+
+        <button type="submit" [disabled]="isLoading" class="main-button my-1"> Sign Up Please
+
+            @if (this.isLoading())
+            {
+            <span class="ms-1 fas fa-spin fa-spinner"></span>
+            }
+
+        </button>
+
+        @if (invalidFormMessage()) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
+            {{invalidFormMessage()}}
+        </div>
+        }
+
+        @if (validFormMessage()) {
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 " role="alert">
+            {{validFormMessage()}}
+        </div>
+        }
+
+    </form>
+
+</section>

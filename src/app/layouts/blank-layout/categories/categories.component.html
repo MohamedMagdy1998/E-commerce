@@ -1,0 +1,34 @@
+<section>
+
+    <div class=" categories grid sm:grid-cols-2 md:grid-cols-5 gap-10">
+        @for (category of allcategories(); track category._id){
+
+        <div class="category px-2 rounded-md border border-yellow-100 shadow overflow-hidden">
+            <div>
+                <div class=" imageProduct">
+                    <img loading="lazy" [src]="category.image" class="w-full h-[250px] object-contain" [alt]="category.name" />
+                </div>
+
+                <div class="categoryDescription px-2 py-3">
+                    <h2 class="capitalize text-2xl text-center text-gray-700">{{ category.name }}</h2>
+
+                </div>
+
+
+            </div>
+
+            <div>
+
+                <button class="showDetailsBtn w-full capitalize bg-blue-500 py-2 text-white rounded-md my-2" [routerLink]="['/specificCategory',category._id]">Show Details</button>
+
+
+            </div>
+
+
+        </div>
+
+        }
+
+    </div>
+
+</section>
