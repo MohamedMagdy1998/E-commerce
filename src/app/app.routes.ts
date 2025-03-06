@@ -8,6 +8,8 @@ import { loggedInGuard } from './core/guard/loggedIn/logged-in.guard';
 import { NotFoundComponent } from './layouts/not found/not-found/not-found.component';
 import { ForgetPasswordComponent } from './layouts/auth-layout/forget-password/forget-password/forget-password.component';
 
+
+
 export const routes: Routes = [
     { path: "", redirectTo: "login", pathMatch: 'full' },
     {
@@ -48,7 +50,7 @@ export const routes: Routes = [
                 title: "All Orders" 
             },
             { 
-                path: "details/:id", 
+                path: "details/:ID", 
                 loadComponent: () => import('./layouts/blank-layout/specificProduct/details-product/details-product.component')
                     .then(m => m.DetailsProductComponent), 
                 title: "specific Product" 

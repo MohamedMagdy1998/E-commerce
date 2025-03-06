@@ -11,6 +11,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { loadingInterceptor } from './core/interceptors/loadingScreen/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
+   
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
@@ -19,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideToastr(),
     importProvidersFrom(NgxSpinnerModule),
+    
   ]
 };
