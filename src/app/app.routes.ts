@@ -50,7 +50,7 @@ export const routes: Routes = [
                 title: "All Orders" 
             },
             { 
-                path: "details/:ID", 
+                path: "details/:id", 
                 loadComponent: () => import('./layouts/blank-layout/specificProduct/details-product/details-product.component')
                     .then(m => m.DetailsProductComponent), 
                 title: "specific Product" 
