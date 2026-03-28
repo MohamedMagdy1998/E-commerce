@@ -48,13 +48,13 @@ submitData():void
        }, 500);
 
        this.isLoading.set(false);
-       this.validFormMessage =response.message;
+    this.validFormMessage.set(response.message);
 
        }
         
       },
       error:(error:HttpErrorResponse)=>{
-     this.invalidFormMessage  = error.error.message;
+  this.invalidFormMessage.set(error.error.message);
         this.isLoading.set(false);
         
       }
