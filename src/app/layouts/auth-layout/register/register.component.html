@@ -182,7 +182,9 @@
 
 
 
-        <button type="submit" class="main-button my-1"> Sign Up Please
+        <button  type="submit"
+  class="main-button my-1 disabled:opacity-50 disabled:cursor-not-allowed"
+  [disabled]="registerForm.invalid || isLoading()"> Sign Up Please
 
             @if (this.isLoading())
             {
