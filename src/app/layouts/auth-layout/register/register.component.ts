@@ -42,7 +42,7 @@ submitData():void
        {
        setTimeout(() => {
         
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
         
         
        }, 500);
